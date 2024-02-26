@@ -3,7 +3,7 @@
 <head>
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>php.lab 1</title>
+    <title>php.lab 3</title>
 </head>
 <body style='display: flex; flex-direction: column; justify-content: space-between; min-height: calc(100vh - 18.4px);'>
     <header>
@@ -12,7 +12,7 @@
     </header>
     <main>
     <?php
-    $task = 'X + 3 = 7';
+    $task = '22 * X = 220';
 
     if (strpos($task, '+') !== false) {
         $operator = '+';
