@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>php.lab 1</title>
+</head>
+
+<body style="display: flex; flex-direction: column; justify-content: space-between; min-height: calc(100vh - 18.4px);">
+    <header>
+        <img style="max-width: 200px; position: absolute;" src="pic/logo.png" alt="#">
+        <p style="margin: 0 auto; padding-top: 20px; width: max-content;">Домашняя работа: Feedback form</p>
+    </header>
+    <main>
+        <form style="display: flex; flex-direction: column; margin: 0 auto; align-items: center; gap: 20px;" action="https://httpbin.org/post" method="post">
+            <div>
+            <label for="f-name">Введите имя</label>
+            <input type="text" name="f-name" id="f-name">
+            </div>
+            <div>
+            <label for="s-name">Введите фамилию</label>
+            <input type="text" name="s-name" id="s-name">
+            </div>
+            <div>
+            <label for="email">Введите почту</label>
+            <input type="email" name="email" id="email">
+            </div>
+            <label for="desk">Поговорим? М?</label>
+            <textarea name="desk" id="desk" cols="" rows=""></textarea>
+            <button type="submit">Отправить</button>
+        </form>
+        <a href="back.php">Посмотреть get</a>
+    </main>
+    <footer>Работу сделал Веселов Матвей</footer>
+</body>
+
+</html>
