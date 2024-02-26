@@ -7,8 +7,8 @@
 </head>
 <body style='display: flex; flex-direction: column; justify-content: space-between; min-height: calc(100vh - 18.4px);'>
     <header>
-        <img style='max-width: 200px; variablePosition: absolute;' src='pic/logo.png' alt='#'>
-        <p style='margin: 0 auto; padding-top: 20px; width: max-content;'>Домашняя работа: Solve the task</p>
+        <img style='max-width: 200px; position: absolute;' src='pic/logo.png' alt='#'>
+        <p style='margin: 0 auto; padding-top: 20px; width: max-content;'>Домашняя работа: Solve the equation</p>
     </header>
     <main>
     <?php
@@ -27,21 +27,21 @@
     $taskParts = explode(' ', $task);
     $variablePosition = array_search('X', $taskParts);
     if ($variablePosition == 0) {
-        if ($operator == '+') {
+        if ($operator === '+') {
             $result = $taskParts[$variablePosition + 4] - $taskParts[$variablePosition + 2];
-        } elseif ($operator == '-') {
+        } elseif ($operator === '-') {
             $result = $taskParts[$variablePosition + 4] + $taskParts[$variablePosition + 2];
-        } elseif ($operator == '*') {
+        } elseif ($operator === '*') {
             $result = $taskParts[$variablePosition + 4] / $taskParts[$variablePosition + 2];
         } else {
             $result = $taskParts[$variablePosition + 4] * $taskParts[$variablePosition + 2];
         };
     } else {
-        if ($operator == '+') {
+        if ($operator === '+') {
             $result = $taskParts[$variablePosition + 2] - $taskParts[$variablePosition - 2];
-        } elseif ($operator == '-') {
+        } elseif ($operator === '-') {
             $result = $taskParts[$variablePosition - 2] - $taskParts[$variablePosition + 2];
-        } elseif ($operator == '*') {
+        } elseif ($operator === '*') {
             $result = $taskParts[$variablePosition + 2] / $taskParts[$variablePosition - 2];
         } else {
             $result = $taskParts[$variablePosition - 2] / $taskParts[$variablePosition + 2];
