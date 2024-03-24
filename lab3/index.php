@@ -26,6 +26,7 @@
 
     $taskParts = explode(' ', $task);
     $variablePosition = array_search('X', $taskParts);
+    
     if ($variablePosition == 0) {
         if ($operator === '+') {
             $result = $taskParts[$variablePosition + 4] - $taskParts[$variablePosition + 2];
