@@ -18,13 +18,13 @@
     }
     function isnum($x) {
         if(!$x) return false;
-        if($x[0]=='.' || $x[0] == '0') return false;
-        if( $x[strlen($x)-1 ] == '.') return false;
-        for($i=0, $point_count=false; $i<strlen($x); $i++) {
-            if($x[$i]!='0' && $x[$i]!='1' && $x[$i]!='2' && $x[$i]!='3' &&
-                $x[$i]!='4' && $x[$i]!='5' && $x[$i]!='6' && $x[$i]!='7' &&
-                $x[$i]!='8' && $x[$i]!='9' && $x[$i]!='.') return false;
-            if($x[$i]=='.') {
+        if(substr($x, 0, 1) == '.' || substr($x, 0, 1) == '0') return false;
+        if(substr($x, strlen($x)-1, 1) == '.') return false;
+        for($i = 0, $point_count = false; $i < strlen($x); $i++) {
+            if(substr($x, $i, 1) != '0' && substr($x, $i, 1) != '1' && substr($x, $i, 1) != '2' && substr($x, $i, 1) != '3' &&
+                substr($x, $i, 1) != '4' && substr($x, $i, 1) != '5' && substr($x, $i, 1) != '6' && substr($x, $i, 1) !='7' &&
+                substr($x, $i, 1) != '8' && substr($x, $i, 1) != '9' && substr($x, $i, 1) != '.') return false;
+            if(substr($x, $i, 1) == '.') {
                 if( $point_count ) return false;
                 else $point_count=true;
             }
@@ -53,6 +53,10 @@
                 $sub -= $arg;
             }
             return $sub;
+        }
+        if(count($args) == 1) {
+            $sub = $args[0];
+            return -$args;
         }
         $args = explode('*', $val);
         if(count($args) > 1) {
@@ -92,7 +96,7 @@
         return true;
     } 
     function calculateBracket($val) {
-        if(!bracketValidator($val)) {echo 'osh'; return 'Неправильная расстановка скобок'; }
+        if(!bracketValidator($val)) return 'Неправильная расстановка скобок';
         $start = strpos($val, '(');
         if($start === false) return calculate($val);
         $end = $start + 1;
