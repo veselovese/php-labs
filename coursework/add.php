@@ -7,7 +7,7 @@ $text = $_POST["post"];
 
 preg_match_all('/#\w+/', $text, $matches);
 $hashtags = $matches[0];
-$channels = ['music', 'cooking', 'movie'];
+$channels = ['style', 'design', 'moscow'];
 
 $text_without_hashtags = preg_replace('/#\w+\s*/', '', $text);
 
@@ -17,6 +17,7 @@ foreach ($hashtags as $hashtag) {
     $count = mysqli_num_rows($connect->query("SELECT id FROM hashtags WHERE name = '$hashtag'"));
     if($count > 0) {
         $hashtag_id = (int)$connect->query("SELECT id FROM hashtags WHERE name = '$hashtag'");
+        $_SESSION['message'] = $hashtag_id;
     } else {
         $sql_insert_hashtag = "INSERT INTO hashtags (name) VALUES ('$hashtag')";
         $connect->query($sql_insert_hashtag);
@@ -33,4 +34,4 @@ foreach ($hashtags as $hashtag) {
     }
 }
 
-header('Location: posts.php');
+header('Location: view.php?channel=all');

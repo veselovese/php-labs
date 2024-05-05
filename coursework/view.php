@@ -28,35 +28,24 @@
     </div>
   </header>
   <main>
-    <section class="nav-post">
-      <ul class="nav-post__list">
-        <li class="nav-post__item">
-            <a class="nav-link" href="./posts.php">Добавить</a>
+    <section class="post">
+      <ul class="post__list">
+        <li class="post__item">
+            <a class="post__link <?php if ($_GET['channel'] == 'all') echo 'active';?>" href="view.php?channel=all">Все</a>
         </li>
-        <li class="nav-post__item">
-            <a class="nav-link" href="./viewing.php?channel=all">Смотреть посты</a>
+        <li class="post__item">
+            <a class="post__link <?php if ($_GET['channel'] == 'style') echo 'active';?>" href="?channel=style">Стиль</a>
+        </li>
+        <li class="post__item">
+            <a class="post__link <?php if ($_GET['channel'] == 'design') echo 'active';?>" href="?channel=design">Дизайн</a>
+        </li>
+        <li class="post__item">
+            <a class="post__link <?php if ($_GET['channel'] == 'moscow') echo 'active';?>" href="?channel=moscow">Москва</a>
         </li>
       </ul>
     </section>
-
-    <div class="wrapper">
-      <section class="post">
-        <ul class="post__list">
-          <li class="post__item">
-              <a class="link" href="./viewing.php?channel=all">Все</a>
-          </li>
-          <li class="post__item">
-              <a class="link" href="?channel=music">Музыка</a>
-          </li>
-          <li class="post__item">
-              <a class="link" href="?channel=cooking">Кулинария</a>
-          </li>
-          <li class="post__item">
-              <a class="link" href="?channel=movie">Кино</a>
-          </li>
-        </ul>
-      </section>
-      <section class="news-line">
+    <section class="news-line">
+      <div>
         <ul class="news-line__list">
           <?php
           require('connect.php');
@@ -75,20 +64,41 @@
               $message = $row["message"];
               $sender = $row["sender"];
               echo "<li class='news-line__item'>";
-              echo "<p class='news-line__user' style='color: var(--link-color);'>От: " . $sender . "</p>";
-              echo "<p class='news-line__message' style='color: var(--input-border);'>#" . $hashtag_name . "</p>";
-              echo "<p class='news-line__hastags'>Сообщение: " . $message . "</p>";
+              echo "<p class='news-line__user' style='color: var(--link-color);'>@" . $sender . "</p>";
+              echo "<p class='news-line__message'>" . $message . "</p>";
+              echo "<p class='news-line__hashtag'>#" . $hashtag_name . "</p>";
               echo "</li>";
             }
           } else {
-            echo "<p style='font-size: 2rem;'>Нет сообщений.</p>";
+            echo "<p style='font-size: 2rem;'>Постов ещё нет</p>";
           }
           ?>
         </ul>
+        <?php if (!isset($_SESSION['user'])) { ?>
+                <p>Чтобы написать пост, надо <a class="" href="index.php">войти</a></p>
+            <?php } ?>
+            <?php if (isset($_SESSION['user'])) { ?>
+                <section>
+                  <form  class="add-form" action="add.php" method="post">
+                    <div>
+                      <label>Пост
+                      <textarea name="post" class="message__txt" placeholder="Ел сегодня пельмени.." required></textarea>
+                      </label>
+                    </div>
+                  <button class="message__btn" type="submit">Добавить запись</button>
+                  </form>
+                </section>
+            <?php } ?>
+        </div>
       </section>
-    </div>
   </main>
   <footer>
+        <?php
+        if (isset($_SESSION['message'])) {
+        echo '<p  style="font-size: 2rem;" class="msg"> ' . $_SESSION['message'] . ' </p>';
+        unset($_SESSION['message']);
+        }
+        ?>
   </footer>
 </body>
 

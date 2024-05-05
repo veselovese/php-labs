@@ -13,33 +13,28 @@
 
 <body>
     <header>
-        <nav>
-        <?php if (!isset($_SESSION['user'])) { ?>
-                    <a class="hed-link" href="./registration.php">Регистрация</a>
-                    <a class="hed-link" href="./index.php">Авторизация</a>
-                <?php } ?>
-                <?php if (isset($_SESSION['user'])) { ?>
-                    <a class="hed-link" href="./profile.php">Профиль</a>
-                <?php } ?>
-        <a class="hed-link" href="./posts.php">Посты</a>
-        </nav>
-    </header>
+    <div>
+    <h1>Twittort</h1>
+    <nav>
+    <?php if (!isset($_SESSION['user'])) { ?>
+                <a class="hed-link-singin" href="registration.php">Зарегистрироваться</a>
+                <a class="hed-link-singup" href="index.php">Войти</a>
+            <?php } ?>
+            <?php if (isset($_SESSION['user'])) { ?>
+                <a class="hed-link-singin" href="profile.php">@<?= $_SESSION['user']['login'] ?></a>
+                <a class="hed-link-singup" href="logout.php">Выйти</a>
+            <?php } ?>
+    </nav>
+    </div>
+  </header>
     <main>
-        <section class="nav-post">
-            <ul class="nav-post__list">
-                <li class="nav-post__item">
-                    <a class="nav-link" href="./posts.php">Добавить</a>
-                </li>
-                <li class="nav-post__item">
-                    <a class="nav-link" href="./viewing.php">Смотреть посты</a>
-                </li>
-            </ul>
-        </section>
-
-        <section class="message">
-        <form class="message__form" action="add.php" method="post">
-            <span>Введите ваш пост</span>
-            <textarea name="post" cols="50" rows="5" class="message__txt" placeholder="Начните писать" required></textarea>
+        <section>
+        <form  class="add-form" action="add.php" method="post">
+            <div>
+            <label>Пост
+            <textarea name="post" class="message__txt" placeholder="Ел сегодня пельмени.." required></textarea>
+            </label>
+            </div>
             <button class="message__btn" type="submit">Добавить запись</button>
         </form>
         </section>

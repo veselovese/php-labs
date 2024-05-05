@@ -33,25 +33,20 @@
             <div class="singin-form-inputs">
             <div>
             <label>Имя:
-                <p class="error-message"></p>
                 <input class="input" type="text" name="name" placeholder="Введите имя" required>
             </label>
             <label>Логин:
-                <p class="error-message"></p>
                 <input class="input" type="text" name="login" placeholder="Введите логин" required>
             </label>
             <label>Email:
-                <p class="error-message"></p>
                 <input class="input" type="email" name="email" placeholder="Введите email" required>
             </label>
                 </div>
             <div>
             <label>Пароль:
-                <p class="error-message"></p>
                 <input class="input" type="password" name="password" placeholder="Введите пароль" required minlength="8">
             </label>
             <label>Подтвердите пароль:
-                <p class="error-message"></p>
                 <input class="input" type="password" name="password_confirm" placeholder="Подтвердите пароль" required minlength="8">
             </label>
             <div id="buttons">

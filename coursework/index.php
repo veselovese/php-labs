@@ -21,7 +21,8 @@
                     <a class="hed-link-singup" href="./index.php">Войти</a>
                 <?php } ?>
                 <?php if (isset($_SESSION['user'])) { ?>
-                    <a class="hed-link" href="./profile.php">Профиль</a>
+                    <a class="hed-link-singin" href="profile.php">@<?= $_SESSION['user']['login'] ?></a>
+                    <a class="hed-link-singup" href="logout.php">Выйти</a>
                 <?php } ?>
             </nav>
         </div>
@@ -77,7 +78,7 @@
                         echo "<p style='font-size: 2rem;'>Нет сообщений.</p>";
                     }
                 ?>
-                <a href="view.php">Все посты</a>
+                <a href="view.php?channel=all">Все посты</a>
                 </div>
             </div>
         </section>

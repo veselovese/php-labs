@@ -36,7 +36,7 @@
         <p class="prof-login">@<?= $_SESSION['user']['login'] ?></p>
         <div>
         <a href="posts.php">Написать пост</a>
-        <a href="view.php">Смотреть стену</a>
+        <a href="view.php?channel=all">Смотреть стену</a>
                 </div>
             </div>
             <div class="prof-right">
@@ -67,7 +67,7 @@
               echo "</li>";
             }
           } else {
-            echo "<p style='font-size: 2rem;'>Вы ещё не сделали потов</p>";
+            echo "<p style='font-size: 2rem;'>Вы ещё не сделали постов</p>";
           }
           ?>
         </ul>
