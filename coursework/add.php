@@ -16,8 +16,8 @@ foreach ($hashtags as $hashtag) {
     
     $count = mysqli_num_rows($connect->query("SELECT id FROM hashtags WHERE name = '$hashtag'"));
     if($count > 0) {
-        $hashtag_id = (int)$connect->query("SELECT id FROM hashtags WHERE name = '$hashtag'");
-        $_SESSION['message'] = $hashtag_id;
+        $result = mysqli_query($connect, "SELECT hashtags.id as hashtag_id FROM hashtags WHERE hashtags.name = '$hashtag'");
+        $hashtag_id = $result->fetch_assoc()['hashtag_id'];
     } else {
         $sql_insert_hashtag = "INSERT INTO hashtags (name) VALUES ('$hashtag')";
         $connect->query($sql_insert_hashtag);
@@ -28,7 +28,7 @@ foreach ($hashtags as $hashtag) {
     
     $sql_insert_posts = "INSERT INTO posts (hashtag_id, channel_id, description, user_id) VALUES ('$hashtag_id', '$channel_id', '$text_without_hashtags', '$userid')";
     if (mysqli_query($connect, $sql_insert_posts)) {
-        $_SESSION['message'] = 'Пост успешно добавлен!';
+        $_SESSION['message'] = 'Пост успешно добавлен';
     } else {
         echo "Error: " . $sql_insert_posts . "<br>" . mysqli_error($connect);
     }

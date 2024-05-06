@@ -36,16 +36,17 @@
             </label>
             </div>
             <button class="message__btn" type="submit">Добавить запись</button>
-        </form>
-        </section>
-    </main>
-    <footer>
-        <?php
+            <?php
         if (isset($_SESSION['message'])) {
         echo '<p  style="font-size: 2rem;" class="msg"> ' . $_SESSION['message'] . ' </p>';
         unset($_SESSION['message']);
         }
         ?>
+        </form>
+        </section>
+    </main>
+    <footer>
+        
     </footer>
 </body>
 

@@ -380,7 +380,7 @@ textarea {
     border-radius: 10px;
     cursor: pointer;
     transition: 0.2s;
-    max-width: 22rem;
+    max-width: max-content;
 }
 
 .prof-left a:hover {
@@ -438,8 +438,48 @@ textarea {
 
 }
 
-.add-form div textarea{
+.add-form div {
+    display: block;
+}
+
+.add-form div textarea {
     background-color: var(--background);
+    border: 2px solid var(--text-color);
     padding: 2rem;
     width: 100%;
+    min-height: 5rem;
+    transition: 0.5s;
+    font-family: Unbounded, sans-serif;
+    font-size: 1.6rem;
+}
+
+.add-form div textarea:hover {
+    border: 2px solid var(--input-border);
+    min-height: 10rem;
+}
+
+.add-form div textarea:hover::placeholder {
+    color: #48569650;
+}
+
+.add-form div textarea:focus {
+    outline: none;
+    border: 2px solid var(--input-border);
+    min-height: 20rem;
+}
+
+.add-form div textarea:user-valid {
+    border: 2px solid var(--header-background);
+    min-height: 20rem;
+}
+
+.add-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+#add-post {
+    margin-top: 2rem;
+    display: block
 }

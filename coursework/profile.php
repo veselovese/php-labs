@@ -35,8 +35,7 @@
         <p class="prof-name"><?= $_SESSION['user']['name'] ?></p>
         <p class="prof-login">@<?= $_SESSION['user']['login'] ?></p>
         <div>
-        <a href="posts.php">Написать пост</a>
-        <a href="view.php?channel=all">Смотреть стену</a>
+        <a href="view.php?channel=all">Написать пост</a>
                 </div>
             </div>
             <div class="prof-right">

@@ -36,7 +36,7 @@
                         <input type="text" name="login" placeholder="Введите логин" required>
                     </label>
                     <label>Пароль
-                        <input type="password" name="password" placeholder="Введите пароль" required>
+                        <input type="password" name="password" placeholder="Введите пароль" required minlength='8'>
                     </label>
                     <div id="buttons">
                         <button type="submit">Войти</button>

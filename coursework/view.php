@@ -70,7 +70,7 @@
               echo "</li>";
             }
           } else {
-            echo "<p style='font-size: 2rem;'>Постов ещё нет</p>";
+            echo "<p style='font-size: 1.6rem;'>Постов ещё нет</p>";
           }
           ?>
         </ul>
@@ -78,7 +78,7 @@
                 <p>Чтобы написать пост, надо <a class="" href="index.php">войти</a></p>
             <?php } ?>
             <?php if (isset($_SESSION['user'])) { ?>
-                <section>
+                <div id="add-post">
                   <form  class="add-form" action="add.php" method="post">
                     <div>
                       <label>Пост
@@ -86,19 +86,19 @@
                       </label>
                     </div>
                   <button class="message__btn" type="submit">Добавить запись</button>
+                  <?php
+        if (isset($_SESSION['message'])) {
+        echo '<p  style="font-size: 1.6rem;" class="msg"> ' . $_SESSION['message'] . ' </p>';
+        unset($_SESSION['message']);
+        }
+        ?>
                   </form>
-                </section>
+            </div>
             <?php } ?>
         </div>
       </section>
   </main>
   <footer>
-        <?php
-        if (isset($_SESSION['message'])) {
-        echo '<p  style="font-size: 2rem;" class="msg"> ' . $_SESSION['message'] . ' </p>';
-        unset($_SESSION['message']);
-        }
-        ?>
   </footer>
 </body>
 
